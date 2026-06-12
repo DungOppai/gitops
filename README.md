@@ -63,9 +63,25 @@ Cấu hình cảnh báo SLO cho ứng dụng:
    ```
 2. Commit & Push lên Git.
 3. Khi Argo CD đồng bộ và Rollout phát hành 25% (Canary Pod đầu tiên nhận tải 50% lỗi):
-   - Prometheus ghi nhận tỷ lệ lỗi vượt quá 5%.
-   - `AnalysisTemplate` chạy định kỳ mỗi 10 giây phát hiện tỷ lệ thành công giảm sâu dưới 95%.
-   - Argo Rollouts lập tức chuyển sang trạng thái **Aborted**, thu hồi bản lỗi và quay lại 100% bản cũ ổn định tự động.
+    - Prometheus ghi nhận tỷ lệ lỗi vượt quá 5%.
+    - `AnalysisTemplate` chạy định kỳ mỗi 10 giây phát hiện tỷ lệ thành công giảm sâu dưới 95%.
+    - Argo Rollouts lập tức chuyển sang trạng thái **Aborted**, thu hồi bản lỗi và quay lại 100% bản cũ ổn định tự động.
+
+### 3.3. Thử nghiệm Git Revert Rollback (< 5 phút)
+Khi cần hoàn tác khẩn cấp cấu hình trên Cluster về trạng thái khỏe mạnh trước đó qua Git:
+1. Thực hiện lệnh `git revert` tại local terminal để đảo ngược commit lỗi cuối cùng:
+   ```bash
+   git revert HEAD --no-edit
+   ```
+2. Đẩy commit hoàn tác lên GitHub:
+   ```bash
+   git push origin main
+   ```
+3. Theo dõi trạng thái trên cluster bằng lệnh:
+   ```bash
+   kubectl get rollout api -n demo
+   ```
+   *Kết quả:* ArgoCD sẽ tự động nhận diện thay đổi và đồng bộ đưa Cluster về trạng thái khỏe mạnh trước đó trong vòng chưa đầy **1 phút** (đáp ứng tốt yêu cầu dưới 5 phút).
 
 ---
 
