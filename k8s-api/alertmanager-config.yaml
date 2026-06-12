@@ -20,7 +20,7 @@ spec:
   receivers:
   - name: 'email-receiver'
     emailConfigs:
-    - to: 'your-personal-email@example.com'  # Thay thế bằng email cá nhân của bạn
+    - to: 'dunghct.22git@vku.udn.vn'  # Email của bạn
       from: 'alertmanager@example.com'
       smarthost: 'smtp.gmail.com:587'  # Cấu hình SMTP (ví dụ Gmail)
       authUsername: 'alertmanager@example.com'
