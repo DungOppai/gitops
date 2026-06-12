@@ -88,3 +88,12 @@ Cấu hình cảnh báo SLO cho ứng dụng:
 ![Alert Email Received](./alert-email-received.png)
 
 *(Mô tả: Hình ảnh email cảnh báo từ Alertmanager thông báo vi phạm SLO Tỷ lệ lỗi > 5%).*
+
+<img width="1737" height="887" alt="ảnh 1" src="https://github.com/user-attachments/assets/28a30f89-803b-4873-a1bc-bcad3fd79ff2" />
+<img width="1875" height="907" alt="ảnh 2 " src="https://github.com/user-attachments/assets/3cc09f2c-762e-4021-96fd-28b25aed8aad" />
+<img width="1918" height="641" alt="ảnh 4" src="https://github.com/user-attachments/assets/e23863a1-88c9-485d-92c4-067e5258817b" />
+<img width="1267" height="702" alt="ảnh 5" src="https://github.com/user-attachments/assets/0e197d35-15e6-404d-b84e-62e5706d7a40" />
+
+
+
+
