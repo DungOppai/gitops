@@ -1,6 +1,15 @@
-# file: k8s-api/servicemonitor.yaml
-kind: ServiceMonitor       # Prometheus scrape /metrics
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: api-monitor
+  namespace: demo
+  labels:
+    release: kube-prometheus-stack
 spec:
-  selector: { matchLabels: { app: api } }
-  endpoints: [ { port: http, path: /metrics, interval: 15s } ]
-# file: argocd/apps/api.yaml -> Application, path: k8s-api, ns: demo
+  selector:
+    matchLabels:
+      app: api
+  endpoints:
+  - port: http
+    path: /metrics
+    interval: 15s

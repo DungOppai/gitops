@@ -1,7 +1,15 @@
-git add app/ k8s-api/ argocd/apps/api.yaml
-git commit -m "api" && git push   # root tự deploy
-# traffic + xem metric:
-#kubectl -n demo run load --image=busybox --restart=Never -- \
-#  sh -c "while true; do wget -qO- api:8080/; done"
-#kubectl -n monitoring port-forward \
-#  svc/kube-prometheus-stack-prometheus 9090 &
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: api
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/DungOppai/gitops.git
+    path: k8s-api
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: demo
+  syncPolicy:
+    automated: { prune: true, selfHeal: true }
