@@ -26,16 +26,16 @@ spec:
         - name: ERROR_RATE
           value: "0"
         - name: VERSION
-          value: "v10"
+          value: "v11"
         readinessProbe:
           httpGet:
             path: /healthz
             port: 8080
   strategy:
     canary:
-      analysis:
-        templates:
-        - templateName: api-success-rate
+#      analysis:
+#        templates:
+#        - templateName: api-success-rate
       steps:
       - setWeight: 25
       - pause: { duration: 1m }
