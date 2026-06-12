@@ -74,25 +74,19 @@ Cấu hình cảnh báo SLO cho ứng dụng:
 *Dưới đây là các hình ảnh/video minh chứng các tính năng tự động hoạt động trên hệ thống:*
 
 ### 4.1. Minh chứng Canary Auto-Abort & Rollback
-> [!TIP]
-> Hãy thay thế hình ảnh/ảnh động dưới đây bằng file chụp màn hình trạng thái rollout bị Abort của bạn.
-
-![Canary Auto-Abort & Rollback](./canary-abort-proof.png)
+<img width="1737" height="887" alt="ảnh 1" src="https://github.com/user-attachments/assets/28a30f89-803b-4873-a1bc-bcad3fd79ff2" />
+<img width="1875" height="907" alt="ảnh 2 " src="https://github.com/user-attachments/assets/3cc09f2c-762e-4021-96fd-28b25aed8aad" />
 
 *(Mô tả: Hình ảnh trạng thái Rollout bị Aborted do AnalysisRun thất bại, tự động đưa replicas của phiên bản lỗi về 0 và đưa phiên bản cũ ổn định về lại đầy đủ replicas).*
 
 ### 4.2. Minh chứng Alert firing & Gửi Email thành công
-> [!TIP]
-> Hãy thay thế hình ảnh dưới đây bằng ảnh chụp màn hình email cảnh báo nhận được trong hộp thư của bạn.
 
-![Alert Email Received](./alert-email-received.png)
+<img width="1918" height="641" alt="ảnh 4" src="https://github.com/user-attachments/assets/e23863a1-88c9-485d-92c4-067e5258817b" />
+<img width="1267" height="702" alt="ảnh 5" src="https://github.com/user-attachments/assets/0e197d35-15e6-404d-b84e-62e5706d7a40" />
 
 *(Mô tả: Hình ảnh email cảnh báo từ Alertmanager thông báo vi phạm SLO Tỷ lệ lỗi > 5%).*
 
-<img width="1737" height="887" alt="ảnh 1" src="https://github.com/user-attachments/assets/28a30f89-803b-4873-a1bc-bcad3fd79ff2" />
-<img width="1875" height="907" alt="ảnh 2 " src="https://github.com/user-attachments/assets/3cc09f2c-762e-4021-96fd-28b25aed8aad" />
-<img width="1918" height="641" alt="ảnh 4" src="https://github.com/user-attachments/assets/e23863a1-88c9-485d-92c4-067e5258817b" />
-<img width="1267" height="702" alt="ảnh 5" src="https://github.com/user-attachments/assets/0e197d35-15e6-404d-b84e-62e5706d7a40" />
+
 
 
 
