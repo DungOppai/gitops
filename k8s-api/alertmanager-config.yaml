@@ -1,0 +1,30 @@
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: api-alert-config
+  namespace: demo
+  labels:
+    release: kube-prometheus-stack
+spec:
+  route:
+    groupBy: ['alertname']
+    groupWait: 10s
+    groupInterval: 10s
+    repeatInterval: 1h
+    receiver: 'email-receiver'
+    routes:
+    - matchers:
+      - name: alertname
+        value: ApiHighErrorRate
+      receiver: 'email-receiver'
+  receivers:
+  - name: 'email-receiver'
+    emailConfigs:
+    - to: 'your-personal-email@example.com'  # Thay thế bằng email cá nhân của bạn
+      from: 'alertmanager@example.com'
+      smarthost: 'smtp.gmail.com:587'  # Cấu hình SMTP (ví dụ Gmail)
+      authUsername: 'alertmanager@example.com'
+      authPassword:
+        name: alertmanager-smtp-credentials
+        key: password
+      requireTLS: true

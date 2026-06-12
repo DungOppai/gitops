@@ -1,0 +1,23 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: api-slo-rules
+  namespace: demo
+  labels:
+    release: kube-prometheus-stack
+spec:
+  groups:
+  - name: api-slo.rules
+    rules:
+    - alert: ApiHighErrorRate
+      expr: |
+        ((sum(rate(flask_http_request_total{namespace="demo", status="500"}[1m])) or vector(0))
+        /
+        (sum(rate(flask_http_request_total{namespace="demo"}[1m])) or vector(1))) >= 0.05
+      for: 1m
+      labels:
+        severity: critical
+        team: devops
+      annotations:
+        summary: "API High Error Rate detected"
+        description: "The error rate of the api application in namespace demo is {{ $value }}, exceeding the SLO threshold of 5%."
