@@ -21,9 +21,9 @@ spec:
   - name: 'email-receiver'
     emailConfigs:
     - to: 'dunghct.22git@vku.udn.vn'  # Email của bạn
-      from: 'alertmanager@example.com'
-      smarthost: 'smtp.gmail.com:587'  # Cấu hình SMTP (ví dụ Gmail)
-      authUsername: 'alertmanager@example.com'
+      from: 'dunghct.22git@vku.udn.vn'  # Email gửi (Gmail của bạn)
+      smarthost: 'smtp.gmail.com:587'  # Cấu hình SMTP Gmail
+      authUsername: 'dunghct.22git@vku.udn.vn'  # Tài khoản đăng nhập Gmail của bạn
       authPassword:
         name: alertmanager-smtp-credentials
         key: password
