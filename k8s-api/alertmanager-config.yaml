@@ -28,3 +28,12 @@ spec:
         name: alertmanager-smtp-credentials
         key: password
       requireTLS: true
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: alertmanager-smtp-credentials
+  namespace: demo
+type: Opaque
+stringData:
+  password: "dummypassword"
