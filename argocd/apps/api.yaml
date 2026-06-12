@@ -1,0 +1,7 @@
+git add app/ k8s-api/ argocd/apps/api.yaml
+git commit -m "api" && git push   # root tự deploy
+# traffic + xem metric:
+#kubectl -n demo run load --image=busybox --restart=Never -- \
+#  sh -c "while true; do wget -qO- api:8080/; done"
+#kubectl -n monitoring port-forward \
+#  svc/kube-prometheus-stack-prometheus 9090 &

@@ -1,0 +1,6 @@
+# file: k8s-api/servicemonitor.yaml
+kind: ServiceMonitor       # Prometheus scrape /metrics
+spec:
+  selector: { matchLabels: { app: api } }
+  endpoints: [ { port: http, path: /metrics, interval: 15s } ]
+# file: argocd/apps/api.yaml -> Application, path: k8s-api, ns: demo
