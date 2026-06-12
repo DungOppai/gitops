@@ -83,6 +83,14 @@ Khi cần hoàn tác khẩn cấp cấu hình trên Cluster về trạng thái k
    ```
    *Kết quả:* ArgoCD sẽ tự động nhận diện thay đổi và đồng bộ đưa Cluster về trạng thái khỏe mạnh trước đó trong vòng chưa đầy **1 phút** (đáp ứng tốt yêu cầu dưới 5 phút).
 
+### 3.4. Thử nghiệm SLO & Email Alerting khi Inject lỗi
+Để xác nhận hệ thống cảnh báo qua Email hoạt động chính xác khi có lỗi vượt ngưỡng SLO:
+1. Đảm bảo cấu hình Email nhận và Mật khẩu ứng dụng (Google App Password) đã được điền chính xác tại [alertmanager-config.yaml](file:///d:/uni/xbrain/phase_2/w2_semi1/gitops/k8s-api/alertmanager-config.yaml).
+2. Tạm thời vô hiệu hóa tính năng tự động rollback (bằng cách comment 3 dòng cấu hình `analysis` trong `api.yaml`) để lỗi không bị tự động thu hồi ngay lập tức, giúp duy trì lỗi liên tục để Prometheus kịp đánh giá.
+3. Thay đổi `ERROR_RATE` thành `"0.5"` (50% lỗi) trong `api.yaml`, commit và push lên Git.
+4. Chờ 1 phút để Prometheus Rule đánh giá (vượt ngưỡng SLO tỷ lệ lỗi >= 5% duy trì trong 1 phút).
+5. **Kết quả:** Alert `ApiHighErrorRate` sẽ chuyển sang trạng thái màu đỏ (`FIRING`) trên dashboard Prometheus. Alertmanager ngay lập tức định tuyến gửi email cảnh báo chi tiết lỗi đến hộp thư Gmail cá nhân của bạn.
+
 ---
 
 ## 4. Minh chứng hoạt động (Proof of Work)
